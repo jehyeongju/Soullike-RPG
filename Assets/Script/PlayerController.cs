@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 	private	Movement3D		movement3D;
 	private	PlayerAnimator	playerAnimator;
 	public HealthBar healthBar;
+	
 
 	private int PlayerMaxHealth = 100;
 	public int PlayerCurrHealth;
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
 	public int money = 0;
 	Rigidbody rigid;
 	public bool check = true;
+	public bool InAttack = false;
 	bool isDamage;
 	private void Awake()
 	{
@@ -66,31 +68,38 @@ public class PlayerController : MonoBehaviour
 
 		// 회전 설정 (항상 앞만 보도록 캐릭터의 회전은 카메라와 같은 회전 값으로 설정)
 		transform.rotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0);
-		
-		
 
-		// Space키를 누르면 점프
-		if ( Input.GetKeyDown(jumpKeyCode) )
+
+
+		if (Input.GetKeyDown(jumpKeyCode))
 		{
-			check = false;
-			playerAnimator.OnJump();	// 애니메이션 파라미터 설정 (onJump)
-			movement3D.JumpTo();        // 점프 함수 호출
-			StartCoroutine(WaitForit());
+			
+				check = false;
+				playerAnimator.OnJump();    // 애니메이션 파라미터 설정 (onJump)
+				movement3D.JumpTo();        // 점프 함수 호출
+				StartCoroutine(WaitForit());
+			
+			
 		}
 
+
+
 		// 마우스 오른쪽 버튼을 누르면 무기 공격 (연계)
-		if ( Input.GetMouseButtonDown(0) )
+		if (Input.GetMouseButtonDown(0))
 		{
 			check = false;
 			playerAnimator.OnWeaponAttack();
 			StartCoroutine(WaitForit());
+			
 		}
 		if (Input.GetMouseButtonDown(1))
 		{
 			check = false;
 			playerAnimator.OnWeaponShield();
 			DTime = 1;
+			
 		}
+		
 	}
 	public void playerDamage(int damage)
 	{
@@ -103,12 +112,18 @@ public class PlayerController : MonoBehaviour
         }
 	}
 	
+	public void InAttackFalse()
+    {
+		InAttack = false;
+    }
 
 	IEnumerator WaitForit()
     {
 		yield return new WaitForSeconds(2f);
 		check = true;
     }
+
+		
 
 	private void OnGameStateChanged(GameState newGameState)
     {

@@ -185,4 +185,9 @@ public class StoreControl : MonoBehaviour
             GSText.text = string.Format("Selected");
         }
     }
+    
+    public void OnClose()
+    {
+        Shop.SetActive(false);
+    }
 }

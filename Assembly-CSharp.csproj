@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{381DB173-41C5-4CAD-638F-B233C9535F3A}</ProjectGuid>
+    <ProjectGuid>{8593F7AB-DEF8-D564-E81C-A921156F97F4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -74,6 +74,7 @@
     <Compile Include="Assets\Cartoon Heroes\Scripts\SetCharacter\SetCharacter.cs" />
     <Compile Include="Assets\Script\EnemyDamage.cs" />
     <Compile Include="Assets\Script\EnemyAnimator.cs" />
+    <Compile Include="Assets\Script\Potion.cs" />
     <Compile Include="Assets\Script\GameStateManager.cs" />
     <Compile Include="Assets\Script\EnemyController.cs" />
     <Compile Include="Assets\Script\HealthBar.cs" />
@@ -81,7 +82,6 @@
     <Compile Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Scripts\CTI_Utils.cs" />
     <Compile Include="Assets\Script\GameOverManager.cs" />
     <Compile Include="Assets\Script\PauseController.cs" />
-    <Compile Include="Assets\Script\Potion.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Shaders\CTI_LOD_Bark_Array_301.shader" />
@@ -774,7 +774,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{66954C35-66AA-1E88-CFC0-E2A14B2A6B98}</Project>
+      <Project>{1BB7E92B-BBCE-5065-84A5-37F1C84C278E}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
   </ItemGroup>

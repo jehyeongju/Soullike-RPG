@@ -364,7 +364,6 @@
 "Assets/Script/PlayerAnimator.cs"
 "Assets/Script/PlayerAttackCollision.cs"
 "Assets/Script/PlayerController.cs"
-"Assets/Script/Potion.cs"
 "Assets/Script/StoreControl.cs"
 "Assets/Script/TitleManager.cs"
 -langversion:9.0

@@ -11,18 +11,17 @@ public class PlayerController : MonoBehaviour
 	private	Movement3D		movement3D;
 	private	PlayerAnimator	playerAnimator;
 	public HealthBar healthBar;
-	
+	private StoreControl store;
 
 	private int PlayerMaxHealth = 100;
 	public int PlayerCurrHealth;
-
 	private float DTime = 1f;
+	public Image skill_img;
 	public static PlayerController Instance;
 	PlayerAttackCollision atkcollsion;
 	public int money = 0;
 	Rigidbody rigid;
 	public bool check = true;
-	public bool InAttack = false;
 	bool isDamage;
 	private void Awake()
 	{
@@ -33,6 +32,7 @@ public class PlayerController : MonoBehaviour
 		playerAnimator	= GetComponentInChildren<PlayerAnimator>();
 		atkcollsion = GetComponent<PlayerAttackCollision>();
 		rigid = GetComponent<Rigidbody>();
+		store = FindObjectOfType<StoreControl>();
 		GameStateManager.Instance.OnGameStateChanged += OnGameStateChanged;
 	}
 
@@ -74,11 +74,11 @@ public class PlayerController : MonoBehaviour
 		if (Input.GetKeyDown(jumpKeyCode))
 		{
 			
+            
 				check = false;
 				playerAnimator.OnJump();    // 애니메이션 파라미터 설정 (onJump)
 				movement3D.JumpTo();        // 점프 함수 호출
 				StartCoroutine(WaitForit());
-			
 			
 		}
 
@@ -99,7 +99,18 @@ public class PlayerController : MonoBehaviour
 			DTime = 1;
 			
 		}
-		
+		if(Input.GetKeyDown(KeyCode.Q))
+        {
+			if(PlayerCurrHealth < 100)
+            {
+				if (store.HealBuyed == true)
+				{
+					PlayerCurrHealth += 10;
+					StartCoroutine(CoolTime(10f));
+				}
+			}
+			
+        }
 	}
 	public void playerDamage(int damage)
 	{
@@ -112,10 +123,6 @@ public class PlayerController : MonoBehaviour
         }
 	}
 	
-	public void InAttackFalse()
-    {
-		InAttack = false;
-    }
 
 	IEnumerator WaitForit()
     {
@@ -123,7 +130,18 @@ public class PlayerController : MonoBehaviour
 		check = true;
     }
 
+	IEnumerator CoolTime(float cool) 
+	{
+		while (cool > 1.0f)
+		{ 
+			cool -= Time.deltaTime; 
+			skill_img.fillAmount = (1.0f / cool); 
+			yield return new WaitForFixedUpdate(); 
+		}
 		
+	}
+	
+
 
 	private void OnGameStateChanged(GameState newGameState)
     {

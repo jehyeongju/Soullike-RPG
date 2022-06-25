@@ -74,7 +74,6 @@
     <Compile Include="Assets\Cartoon Heroes\Scripts\SetCharacter\SetCharacter.cs" />
     <Compile Include="Assets\Script\EnemyDamage.cs" />
     <Compile Include="Assets\Script\EnemyAnimator.cs" />
-    <Compile Include="Assets\Script\Potion.cs" />
     <Compile Include="Assets\Script\GameStateManager.cs" />
     <Compile Include="Assets\Script\EnemyController.cs" />
     <Compile Include="Assets\Script\HealthBar.cs" />

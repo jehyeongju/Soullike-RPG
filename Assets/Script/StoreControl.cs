@@ -15,13 +15,18 @@ public class StoreControl : MonoBehaviour
     public bool LsBuyed = false;
     public bool KnifeBuyed = false;
     public bool GsBuyed = false;
+    public bool HealBuyed = false;
+    private bool isPause;
     [SerializeField]
     private GameObject Shop;
+    [SerializeField]
+    private GameObject SpellShop;
     private PlayerAttackCollision playerAttack;
     [Header("무기 가격")]
     private int LongSwordPrice = 300;
     private int KnifePrice = 500;
     private int GreatSwordPrice = 1000;
+    private int HealSpellPrice = 1500;
     [SerializeField]
     private GameObject[] curWeapon;
     private int i;
@@ -39,6 +44,8 @@ public class StoreControl : MonoBehaviour
     private Text KnifeText;
     [SerializeField]
     private Text GSText;
+    [SerializeField]
+    private Text HealText;
     [Header("무기 데미지")]
     private int LSDamage = 15;
     private int KnifeDamge = 20;
@@ -47,7 +54,6 @@ public class StoreControl : MonoBehaviour
     void Start()
     {
         playerAttack = GetComponent<PlayerAttackCollision>();
-        
     }
 
     // Update is called once per frame
@@ -65,11 +71,17 @@ public class StoreControl : MonoBehaviour
             if (ShopActivated)
             {
                 OpenShop();
-
+                Time.timeScale = 0;
+                return;
             }
                
             else
+            {
                 CloseShop();
+                Time.timeScale = 1;
+                return;
+            }
+                
                 
         }
     }
@@ -185,9 +197,41 @@ public class StoreControl : MonoBehaviour
             GSText.text = string.Format("Selected");
         }
     }
+    public void OnHealSpell()
+    {
+        if(HealBuyed == false)
+        {
+            HealBuyed = true;
+            PlayerController.Instance.money -= HealSpellPrice;
+            HealText.text = string.Format("Sold");
+            GSButton.interactable = false;
+        }
+    }
     
-    public void OnClose()
+    public void OnSwordClose()
     {
         Shop.SetActive(false);
+        Time.timeScale = 1;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
-}
+    public void OnSpellClose()
+    {
+        SpellShop.SetActive(false);
+        Time.timeScale = 1;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void OnChangeSpellShop()
+    {
+        Shop.SetActive(false);
+        SpellShop.SetActive(true);
+    }
+
+    public void OnChangeSwordShop()
+    {
+        SpellShop.SetActive(false);
+        Shop.SetActive(true);
+    }
+}   

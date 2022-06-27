@@ -23,6 +23,8 @@ public class PlayerAttackCollision : MonoBehaviour
 		if ( other.gameObject.CompareTag("Enemy") ==true )
 		{
 			other.GetComponent<EnemyController>().TakeDamage(AttackDamage);
+			other.GetComponent<EnemyController>().HitEffect.SetActive(true);
+			other.GetComponent<EnemyController>().Invoke("HitEffectOff", 0.5f);
 		}
 	}
 

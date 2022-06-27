@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 	private	PlayerAnimator	playerAnimator;
 	public HealthBar healthBar;
 	private StoreControl store;
-
+	public GameObject healEffect;
 	private int PlayerMaxHealth = 100;
 	public int PlayerCurrHealth;
 	private float DTime = 1f;
@@ -106,12 +106,19 @@ public class PlayerController : MonoBehaviour
 				if (store.HealBuyed == true)
 				{
 					PlayerCurrHealth += 10;
+					healEffect.SetActive(true);
+					Invoke("EffectOff", 3);
 					StartCoroutine(CoolTime(10f));
 				}
 			}
 			
         }
 	}
+
+	public void EffectOff()
+    {
+		healEffect.SetActive(false);
+    }
 	public void playerDamage(int damage)
 	{
 		PlayerCurrHealth -= damage;

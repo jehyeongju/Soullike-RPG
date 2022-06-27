@@ -37,6 +37,8 @@ public class StoreControl : MonoBehaviour
     private Button KnifeButton;
     [SerializeField]
     private Button GSButton;
+    [SerializeField]
+    private Button HealButton;
     [Header("무기 텍스트")]
     [SerializeField]
     private Text LSText;
@@ -95,6 +97,7 @@ public class StoreControl : MonoBehaviour
     private void CloseShop()
     {
         Shop.SetActive(false);
+        SpellShop.SetActive(false);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -204,7 +207,7 @@ public class StoreControl : MonoBehaviour
             HealBuyed = true;
             PlayerController.Instance.money -= HealSpellPrice;
             HealText.text = string.Format("Sold");
-            GSButton.interactable = false;
+            HealButton.interactable = false;
         }
     }
     

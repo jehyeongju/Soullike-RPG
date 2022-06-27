@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
 	public bool isChase;
 	public bool isAttack;
 	public BoxCollider meleeArea;
+	public GameObject HitEffect;
 
 	private EnemySpawn enemySpawn;
 
@@ -109,6 +110,10 @@ public class EnemyController : MonoBehaviour
 		Die();
     }
 	
+	public void HitEffectOff()
+    {
+		HitEffect.SetActive(false);
+    }
 	private void Die()
     {
 		if(!isDead)

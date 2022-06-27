@@ -69,7 +69,6 @@ public class Movement3D : MonoBehaviour
 		var labelStyle = new GUIStyle();
 		labelStyle.fontSize = 50;
 		labelStyle.normal.textColor = Color.white;
-		GUILayout.Box("상점키 : Tab" ,labelStyle);
-		GUILayout.Box("현재돈 : " + PlayerController.Instance.money, labelStyle);
+		GUI.Label(new Rect(0, Screen.height - 50, 100, 100), "현재속도 : " + moveSpeed,labelStyle);
 	}
 }

@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 	private int PlayerMaxHealth = 100;
 	public int PlayerCurrHealth;
 	private float DTime = 1f;
+	public Text moneytext;
 	public Image skill_img;
 	public static PlayerController Instance;
 	PlayerAttackCollision atkcollsion;
@@ -48,7 +49,8 @@ public class PlayerController : MonoBehaviour
 	}
     private void Update()
 	{
-		if(DTime >= 0)
+		
+		if (DTime >= 0)
         {
 			DTime -= Time.deltaTime;
 			gameObject.tag = "Shield";
@@ -113,6 +115,7 @@ public class PlayerController : MonoBehaviour
 			}
 			
         }
+		moneytext.text = "$ : " + money;
 	}
 
 	public void EffectOff()

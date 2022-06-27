@@ -358,6 +358,7 @@
 "Assets/Script/GameState.cs"
 "Assets/Script/GameStateManager.cs"
 "Assets/Script/HealthBar.cs"
+"Assets/Script/HelpControl.cs"
 "Assets/Script/Movement3D.cs"
 "Assets/Script/OrcScore.cs"
 "Assets/Script/PauseController.cs"

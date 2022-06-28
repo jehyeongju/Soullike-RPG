@@ -5,44 +5,57 @@ using UnityEngine;
 public class HelpControl : MonoBehaviour
 {
     public GameObject HelpImage;
+    private StoreControl store;
     public bool HelpActivated;
     // Start is called before the first frame update
     void Start()
     {
-        
+        store = FindObjectOfType<StoreControl>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.R))
+        if(Input.GetKeyDown(KeyCode.H))
         {
-            HelpActivated = !HelpActivated;
+            if(store.ShopActivated == false)
+            {
+                HelpActivated = !HelpActivated;
+
+                if (HelpActivated)
+                {
+                    HelpImage.SetActive(true);
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.None;
+                    Time.timeScale = 0;
+                    return;
+                }
+                else
+                {
+                    HelpImage.SetActive(false);
+                    Cursor.visible = false;
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Time.timeScale = 1;
+                    return;
+                }
+            }
             
-            if(HelpActivated)
-            {
-                HelpImage.SetActive(true);
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-                Time.timeScale = 0;
-                return;
-            }
-            else
-            {
-                HelpImage.SetActive(false);
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
-                Time.timeScale = 1;
-                return;
-            }
         }
 
     }
     public void OnHelpClose()
     {
         HelpImage.SetActive(false);
-        Time.timeScale = 1;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1;
+    }
+    public void OnHelpOpen()
+    {
+        HelpImage.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0;
+        return;
     }
 }

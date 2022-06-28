@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyDamage : MonoBehaviour
 {
 	public int MonsterDamage = 5;
-	
 	private void Start()
 	{
 		
@@ -34,8 +33,5 @@ public class EnemyDamage : MonoBehaviour
 		gameObject.SetActive(false);
 	}
 
-	void OnCollisionEnter(Collision collision)
-	{
-
-	}
+	
 }

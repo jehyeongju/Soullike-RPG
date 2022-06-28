@@ -13,15 +13,18 @@ public class PlayerController : MonoBehaviour
 	public HealthBar healthBar;
 	private StoreControl store;
 	public GameObject healEffect;
+	public GameObject hitEffect;
 	private int PlayerMaxHealth = 100;
 	public int PlayerCurrHealth;
 	private float DTime = 1f;
 	public Text moneytext;
+	public Text HpText;
 	public Image skill_img;
 	public static PlayerController Instance;
 	PlayerAttackCollision atkcollsion;
 	public int money = 0;
 	Rigidbody rigid;
+	public bool IsCool = true;	
 	public bool check = true;
 	bool isDamage;
 	private void Awake()
@@ -34,6 +37,7 @@ public class PlayerController : MonoBehaviour
 		atkcollsion = GetComponent<PlayerAttackCollision>();
 		rigid = GetComponent<Rigidbody>();
 		store = FindObjectOfType<StoreControl>();
+		healthBar = FindObjectOfType<HealthBar>();
 		GameStateManager.Instance.OnGameStateChanged += OnGameStateChanged;
 	}
 
@@ -49,7 +53,7 @@ public class PlayerController : MonoBehaviour
 	}
     private void Update()
 	{
-		
+		healthBar.SetHealth(PlayerCurrHealth);
 		if (DTime >= 0)
         {
 			DTime -= Time.deltaTime;
@@ -107,32 +111,48 @@ public class PlayerController : MonoBehaviour
             {
 				if (store.HealBuyed == true)
 				{
-					PlayerCurrHealth += 10;
-					healEffect.SetActive(true);
-					Invoke("EffectOff", 3);
-					StartCoroutine(CoolTime(10f));
+					if(IsCool == true)
+                    {
+						PlayerCurrHealth += 10;
+						healEffect.SetActive(true);
+						Invoke("EffectOff", 3);
+						IsCool = false;
+						StartCoroutine(CoolTime(8f));
+						Invoke("Cooltrue", 8);
+					}
+					
 				}
 			}
 			
         }
 		moneytext.text = "$ : " + money;
+		HpText.text = "HP : 100/ " + PlayerCurrHealth;
 	}
-
-	public void EffectOff()
+	public void Cooltrue()
+    {
+		IsCool = true;
+    }
+	public void healEffectOff()
     {
 		healEffect.SetActive(false);
     }
+
 	public void playerDamage(int damage)
 	{
 		PlayerCurrHealth -= damage;
 		healthBar.SetHealth(PlayerCurrHealth);
 		playerAnimator.OnDamage();
+		hitEffect.SetActive(true);
+		Invoke("HitEffectOff", 1);
 		if(PlayerCurrHealth <= 0)
         {
 			GameOver();
         }
 	}
-	
+	public void HitEffectOff()
+	{
+		hitEffect.SetActive(false);
+	}
 
 	IEnumerator WaitForit()
     {

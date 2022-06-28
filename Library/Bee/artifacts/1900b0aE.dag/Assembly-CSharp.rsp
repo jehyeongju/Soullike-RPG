@@ -115,6 +115,7 @@
 -define:ENABLE_TILEMAP
 -define:ENABLE_TIMELINE
 -define:ENABLE_LEGACY_INPUT_MANAGER
+-define:UNITY_POST_PROCESSING_STACK_V2
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
 -r:"Assets/Plugins/Demigiant/DOTween/DOTween.dll"
@@ -329,6 +330,8 @@
 -r:"C:/Users/USER/Documents/Soullike-RPG/Library/PackageCache/com.unity.nuget.newtonsoft-json@3.0.2/Runtime/Newtonsoft.Json.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-firstpass.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.PlasticSCM.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Postprocessing.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Postprocessing.Runtime.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Rider.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Services.Core.Analytics.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Services.Core.Environments.ref.dll"
@@ -349,6 +352,9 @@
 "Assets/MeleeWeaponTrail/Example/Scripts/SwooshTest.cs"
 "Assets/MeleeWeaponTrail/Scripts/Interpolate.cs"
 "Assets/MeleeWeaponTrail/Scripts/MeleeWeaponTrail.cs"
+"Assets/Script/BossController.cs"
+"Assets/Script/BossDamage.cs"
+"Assets/Script/BossHealthBar.cs"
 "Assets/Script/CameraController.cs"
 "Assets/Script/EnemyAnimator.cs"
 "Assets/Script/EnemyController.cs"

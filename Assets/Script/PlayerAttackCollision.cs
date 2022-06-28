@@ -25,6 +25,13 @@ public class PlayerAttackCollision : MonoBehaviour
 			other.GetComponent<EnemyController>().TakeDamage(AttackDamage);
 			other.GetComponent<EnemyController>().HitEffect.SetActive(true);
 			other.GetComponent<EnemyController>().Invoke("HitEffectOff", 0.5f);
+			
+		}
+		else if(other.gameObject.CompareTag("Boss") == true)
+        {
+			other.GetComponent<BossController>().TakeDamage(AttackDamage);
+			other.GetComponent<BossController>().HitEffect.SetActive(true);
+			other.GetComponent<BossController>().Invoke("HitEffectOff", 0.5f);
 		}
 	}
 

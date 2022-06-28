@@ -17,6 +17,7 @@ public class StoreControl : MonoBehaviour
     public bool GsBuyed = false;
     public bool HealBuyed = false;
     private bool isPause;
+    private HelpControl help;
     [SerializeField]
     private GameObject Shop;
     [SerializeField]
@@ -56,6 +57,7 @@ public class StoreControl : MonoBehaviour
     void Start()
     {
         playerAttack = GetComponent<PlayerAttackCollision>();
+        help = FindObjectOfType<HelpControl>();
     }
 
     // Update is called once per frame
@@ -67,22 +69,26 @@ public class StoreControl : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            ShopActivated = !ShopActivated;
+            if(help.HelpActivated == false)
+            {
+                ShopActivated = !ShopActivated;
 
 
-            if (ShopActivated)
-            {
-                OpenShop();
-                Time.timeScale = 0;
-                return;
+                if (ShopActivated)
+                {
+                    OpenShop();
+                    Time.timeScale = 0;
+                    return;
+                }
+
+                else
+                {
+                    CloseShop();
+                    Time.timeScale = 1;
+                    return;
+                }
             }
-               
-            else
-            {
-                CloseShop();
-                Time.timeScale = 1;
-                return;
-            }
+            
                 
                 
         }
@@ -204,10 +210,14 @@ public class StoreControl : MonoBehaviour
     {
         if(HealBuyed == false)
         {
-            HealBuyed = true;
-            PlayerController.Instance.money -= HealSpellPrice;
-            HealText.text = string.Format("Sold");
-            HealButton.interactable = false;
+            if(PlayerController.Instance.money >= HealSpellPrice)
+            {
+                HealBuyed = true;
+                PlayerController.Instance.money -= HealSpellPrice;
+                HealText.text = string.Format("Sold");
+                HealButton.interactable = false;
+            }
+            
         }
     }
     

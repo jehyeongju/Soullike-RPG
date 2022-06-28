@@ -34,7 +34,7 @@ public class EnemyController : MonoBehaviour
 		playercont = GetComponent<PlayerController>();
 		enemySpawn = FindObjectOfType<EnemySpawn>();
 		enemySpawn.SendMessage("PlusEnemy");
-		Invoke("ChaseStart", 2);
+		Invoke("ChaseStart", 1);
 	}
 
     private void Start()
@@ -55,7 +55,7 @@ public class EnemyController : MonoBehaviour
 	void Targeting()
     {
 		float targetradius = 1.5f;
-		float targetRange = 3f;
+		float targetRange = 2.5f;
 		RaycastHit[] rayHits =
 			Physics.SphereCastAll(transform.position, targetradius, transform.forward, targetRange, LayerMask.GetMask("Player"));
 		if(rayHits.Length > 0 && !isAttack)
@@ -124,9 +124,10 @@ public class EnemyController : MonoBehaviour
 				isChase = false;
 				nav.enabled = false;
 				animator.SetTrigger("Die");
-				PlayerController.Instance.money += 10;
+				PlayerController.Instance.money += 250;
 				Destroy(gameObject, 1.3f);
 				OrcScore.orcKilled += 1;
+				enemySpawn.SendMessage("MinusEnemy");
 			}
 		}
 		

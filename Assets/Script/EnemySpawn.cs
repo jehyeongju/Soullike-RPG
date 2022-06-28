@@ -6,15 +6,18 @@ public class EnemySpawn : MonoBehaviour
 {
     public GameObject rangeObject;
     BoxCollider rangeCollider;
-
-    public int MaxEnemy = 5;
+    public GameObject bossHpBar;
+    public int MaxEnemy = 20;
     public int CountEnemy = 0;
     public bool isSpawn;
-
+    bool orcTwKilled = false;
+    bool updateCheck = true;
+    bool isBoss = false;
     public Transform parent;
     private void Awake()
     {
         rangeCollider = rangeObject.GetComponent<BoxCollider>();
+        StartCoroutine(RandomRespawn_Coroutine());
     }
 
     Vector3 Return_RandomPosition()
@@ -33,9 +36,26 @@ public class EnemySpawn : MonoBehaviour
     }
 
     public GameObject enemy;
+
+    public GameObject Boss;
     private void Start()
     {
-        StartCoroutine(RandomRespawn_Coroutine());
+        
+        
+    }
+    private void Update()
+    {
+       BossSpawn();
+        
+        if (OrcScore.orcKilled == 20 && updateCheck)
+        {
+            orcTwKilled = true;
+            updateCheck = false;
+            Debug.Log("Boss1");
+            
+        }
+        
+
     }
 
     IEnumerator RandomRespawn_Coroutine()
@@ -46,7 +66,8 @@ public class EnemySpawn : MonoBehaviour
             {
 
             }
-            else
+           
+            else if(isBoss == false)
             {
                 yield return new WaitForSeconds(5f);
 
@@ -58,10 +79,26 @@ public class EnemySpawn : MonoBehaviour
 
 
     }
+    
+    void BossSpawn()
+    {
+        if(orcTwKilled)
+        {
+            Debug.Log("Boss2");
+            GameObject instantBoss = Instantiate(Boss, Return_RandomPosition(),Quaternion.identity, parent);
+            orcTwKilled = false;
+            isBoss = true;
+            bossHpBar.SetActive(true);
+        }
 
+    }
     public void PlusEnemy()
     {
         CountEnemy++;
+    }
+    public void MinusEnemy()
+    {
+        CountEnemy--;
     }
 }
 

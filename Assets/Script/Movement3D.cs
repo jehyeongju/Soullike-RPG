@@ -16,10 +16,13 @@ public class Movement3D : MonoBehaviour
 
 	PlayerAnimator playerAnim;
 
+	EnemySpawn enemyspawn;
+
 	private void Awake()
 	{
 		characterController = GetComponent<CharacterController>();
 		playerAnim = GetComponent<PlayerAnimator>();
+		enemyspawn = FindObjectOfType<EnemySpawn>();
 	}
 
 	private void Update()
@@ -69,6 +72,7 @@ public class Movement3D : MonoBehaviour
 		var labelStyle = new GUIStyle();
 		labelStyle.fontSize = 50;
 		labelStyle.normal.textColor = Color.white;
-		GUI.Label(new Rect(0, Screen.height - 50, 100, 100), "현재속도 : " + moveSpeed,labelStyle);
+		GUILayout.Label("현재 이동 속도 : " + moveSpeed,labelStyle);
+		GUILayout.Label("현재 생존하고 있는 오크 수 : " + enemyspawn.CountEnemy, labelStyle);
 	}
 }

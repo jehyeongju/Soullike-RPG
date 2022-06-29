@@ -356,6 +356,7 @@
 "Assets/Script/BossDamage.cs"
 "Assets/Script/BossHealthBar.cs"
 "Assets/Script/CameraController.cs"
+"Assets/Script/ClearTime.cs"
 "Assets/Script/EnemyAnimator.cs"
 "Assets/Script/EnemyController.cs"
 "Assets/Script/EnemyDamage.cs"
@@ -372,6 +373,7 @@
 "Assets/Script/PlayerAttackCollision.cs"
 "Assets/Script/PlayerController.cs"
 "Assets/Script/StoreControl.cs"
+"Assets/Script/TimerControl.cs"
 "Assets/Script/TitleManager.cs"
 -langversion:9.0
 

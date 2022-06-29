@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour
                     {
 						PlayerCurrHealth += 10;
 						healEffect.SetActive(true);
-						Invoke("EffectOff", 3);
+						Invoke("healEffectOff", 3);
 						IsCool = false;
 						StartCoroutine(CoolTime(8f));
 						Invoke("Cooltrue", 8);

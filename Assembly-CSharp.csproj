@@ -67,7 +67,9 @@
     <Compile Include="Assets\Script\PlayerAttackCollision.cs" />
     <Compile Include="Assets\Script\BossDamage.cs" />
     <Compile Include="Assets\MeleeWeaponTrail\Scripts\MeleeWeaponTrail.cs" />
+    <Compile Include="Assets\Script\ClearTime.cs" />
     <Compile Include="Assets\MeleeWeaponTrail\Scripts\Interpolate.cs" />
+    <Compile Include="Assets\Script\TimerControl.cs" />
     <Compile Include="Assets\MeleeWeaponTrail\Example\Scripts\LookAtTarget.cs" />
     <Compile Include="Assets\Script\BossHealthBar.cs" />
     <Compile Include="Assets\Script\PlayerAnimator.cs" />

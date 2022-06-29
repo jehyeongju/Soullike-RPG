@@ -12,12 +12,14 @@ public class EnemySpawn : MonoBehaviour
     public bool isSpawn;
     bool orcTwKilled = false;
     bool updateCheck = true;
-    bool isBoss = false;
+    public bool isBoss = false;
+    public static EnemySpawn inst;
     public Transform parent;
     private void Awake()
     {
         rangeCollider = rangeObject.GetComponent<BoxCollider>();
         StartCoroutine(RandomRespawn_Coroutine());
+        inst = this;
     }
 
     Vector3 Return_RandomPosition()

@@ -10,7 +10,7 @@ public class BossController : MonoBehaviour
 {
 	private	Animator animator;
 	public Transform target;
-	
+	public bool BossDead;
 	public int maxHealth = 600;
 	public int currHealth;
 	public bool isChase;
@@ -137,6 +137,7 @@ public class BossController : MonoBehaviour
 				Destroy(gameObject, 1.3f);
 				GameClear();
 				OrcScore.orcKilled += 1;
+				BossDead = false;
 			}
 		}
 		

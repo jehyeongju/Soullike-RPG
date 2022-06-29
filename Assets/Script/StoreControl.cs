@@ -227,6 +227,7 @@ public class StoreControl : MonoBehaviour
         Time.timeScale = 1;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        ShopActivated = false;
     }
     public void OnSpellClose()
     {
@@ -234,6 +235,7 @@ public class StoreControl : MonoBehaviour
         Time.timeScale = 1;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        ShopActivated = false;
     }
 
     public void OnChangeSpellShop()

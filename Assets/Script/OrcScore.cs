@@ -11,7 +11,7 @@ public class OrcScore : MonoBehaviour
     void Awake()
     {
         text = GetComponent<Text>();
-        orcKilled = 0;
+        orcKilled = 20;
     }
 
     private void Update()

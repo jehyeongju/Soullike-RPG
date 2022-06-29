@@ -21,17 +21,13 @@ public class EnemyController : MonoBehaviour
 
 	private bool isDead = false;
 	Rigidbody rigid;
-	BoxCollider boxCollider;
 	NavMeshAgent nav;
 
-	PlayerController playercont;
 	private void Awake()
 	{
 		animator = GetComponent<Animator>();
 		rigid = GetComponent<Rigidbody>();
-		boxCollider = GetComponent<BoxCollider>();
 		nav = GetComponent<NavMeshAgent>();
-		playercont = GetComponent<PlayerController>();
 		enemySpawn = FindObjectOfType<EnemySpawn>();
 		enemySpawn.SendMessage("PlusEnemy");
 		Invoke("ChaseStart", 1);
@@ -55,7 +51,7 @@ public class EnemyController : MonoBehaviour
 	void Targeting()
     {
 		float targetradius = 1.5f;
-		float targetRange = 2.5f;
+		float targetRange = 1.5f;
 		RaycastHit[] rayHits =
 			Physics.SphereCastAll(transform.position, targetradius, transform.forward, targetRange, LayerMask.GetMask("Player"));
 		if(rayHits.Length > 0 && !isAttack)

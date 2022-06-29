@@ -49,6 +49,7 @@ public class HelpControl : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1;
+        HelpActivated = false;
     }
     public void OnHelpOpen()
     {

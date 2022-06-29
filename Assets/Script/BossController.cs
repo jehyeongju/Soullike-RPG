@@ -60,8 +60,8 @@ public class BossController : MonoBehaviour
     }
 	void Targeting()
     {
-		float targetradius = 10f;
-		float targetRange = 3.5f;
+		float targetradius = 5f;
+		float targetRange = 1.5f;
 		RaycastHit[] rayHits =
 			Physics.SphereCastAll(transform.position, targetradius, transform.forward, targetRange, LayerMask.GetMask("Player"));
 		if(rayHits.Length > 0 && !isAttack)
